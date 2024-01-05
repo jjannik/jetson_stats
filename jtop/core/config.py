@@ -22,7 +22,7 @@ import sys
 import copy
 # Create logger
 logger = logging.getLogger(__name__)
-JTOP_DATA_FOLDER = 'local/jtop'
+JTOP_DATA_FOLDER = '/var/lib/jtop'
 
 
 def make_config_service(data_folder=JTOP_DATA_FOLDER):
@@ -34,13 +34,8 @@ def make_config_service(data_folder=JTOP_DATA_FOLDER):
 
 
 def get_config_service(data_folder=JTOP_DATA_FOLDER):
-    path = sys.prefix
-    if hasattr(sys, 'real_prefix'):
-        path = sys.real_prefix
-    if hasattr(sys, 'base_prefix'):
-        path = sys.base_prefix
     # Return directory folder
-    return "{path}/{data_folder}".format(path=path, data_folder=data_folder)
+    return "{data_folder}".format(path=path, data_folder=data_folder)
 
 
 class Config:
